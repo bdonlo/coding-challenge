@@ -1,0 +1,60 @@
+DROP TABLE IF EXISTS pizza;
+
+CREATE TABLE pizza (
+  id bigint AUTO_INCREMENT  PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  price NUMERIC(20, 2) NOT NULL
+);
+
+DROP TABLE IF EXISTS porder_item_topping;
+DROP TABLE IF EXISTS porder_item;
+DROP TABLE IF EXISTS porder;
+
+CREATE TABLE porder (
+  id bigint AUTO_INCREMENT  PRIMARY KEY,
+  customer VARCHAR(100) NOT NULL,
+  amount NUMERIC(20, 2) NOT NULL
+);
+
+
+
+CREATE TABLE porder_item (
+  id bigint AUTO_INCREMENT  PRIMARY KEY,
+  porder_id bigint NOT NULL,
+  pizza_id bigint NOT NULL,
+  qty int NOT NULL,
+  size_id int NOT NULL
+);
+
+
+
+CREATE TABLE porder_item_topping (
+  id bigint AUTO_INCREMENT  PRIMARY KEY,
+  porder_item_id bigint NOT NULL,
+  topping_id int NOT NULL
+);
+
+--INSERT INTO topping (id, topping_desc) VALUES
+--    (1, 'Pizza Topping #1');
+-- INSERT INTO topping (id, topping_desc) VALUES
+--    ,(2, 'Pizza Topping #2')
+--    ,(3, 'Pizza Topping #3')
+--    ,(4, 'Pizza Topping #4')
+--    ,(5, 'Pizza Topping #5')
+--    ,(6, 'Pizza Topping #6')
+--    ,(7, 'Pizza Topping #7')
+--    ,(8, 'Pizza Topping #8')
+--    ,(9, 'Pizza Topping #9');
+--
+-- INSERT INTO size(id, size_desc) VALUES
+--    (1, 'Pizza Size #1')
+--    ,(2, 'Pizza Size #2')
+--    ,(3, 'Pizza Size #3');
+
+INSERT INTO pizza(id, name, price) VALUES
+    (1, 'Pizza Name #1', 99.0)
+    ,(2, 'Pizza Name #2', 99.0)
+    ,(3, 'Pizza Name #3', 99.0)
+    ,(4, 'Pizza Name #4', 99.0)
+    ,(5, 'Pizza Name $5', 99.0)
+    ,(6, 'Pizza Name #6', 99.0);
