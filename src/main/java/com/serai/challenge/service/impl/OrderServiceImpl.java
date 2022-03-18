@@ -47,7 +47,11 @@ public class OrderServiceImpl implements OrderService {
 
         for (int i=0; i<randItem; i++) {
             Pizza pizza = Pizza.random();
-            ItemDto item = new ItemDto(pizza, r.nextInt(Constants.MAX_RANDOM_QTY), Size.random().getId());
+            int qty=0;
+            while(qty==0){
+                qty = r.nextInt(Constants.MAX_RANDOM_QTY);
+            }
+            ItemDto item = new ItemDto(pizza, qty, Size.random().getId());
 
             //Calculate the grand total of parent order
             dto.setAmount(new BigDecimal(dto.getAmount()).add(BigDecimal.valueOf(pizza.getPrice())).doubleValue());

@@ -49,7 +49,7 @@ public class OrderServiceTests {
     public void testGenerateOrder() throws Exception {
         OrderServiceImpl svc = new OrderServiceImpl(this.orderRepository);
         OrderDto orderDto = svc.generateOrder();
-
+        logger.info("Response=" + new ObjectMapper().writeValueAsString(orderDto));
         assertNotEquals(null, orderDto.getCustomer());
         assertNotEquals("", orderDto.getCustomer());
         assertNotEquals(orderDto.getAmount(), 0);
@@ -68,7 +68,7 @@ public class OrderServiceTests {
 
         OrderResponse res = svc.processOrder(orderDto);
         Order o = res.getOrder();
-
+        logger.info("Response=" + new ObjectMapper().writeValueAsString(res));
         assertNotEquals(null, o.getCustomer());
         assertNotEquals("", o.getCustomer());
         assertNotEquals(o.getAmount(), 0);
